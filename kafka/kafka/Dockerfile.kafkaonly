@@ -5,6 +5,7 @@ RUN echo http://nl.alpinelinux.org/alpine/v3.5/main > /etc/apk/repositories; \
     echo http://nl.alpinelinux.org/alpine/v3.5/community >> /etc/apk/repositories
 RUN apk update
 RUN /bin/sh -c "apk add --no-cache bash"
+RUN /bin/sh -c "apk add --no-cache bind-tools"
 
 ENV SCALA_VERSION 2.11
 ENV KAFKA_VERSION 0.10.2.1
