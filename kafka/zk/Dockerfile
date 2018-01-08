@@ -52,4 +52,3 @@ ENV PATH=$PATH:/$DISTRO_NAME/bin \
     ZOOCFGDIR=$ZOO_CONF_DIR
 
 COPY zk-docker-entrypoint.sh /
-
