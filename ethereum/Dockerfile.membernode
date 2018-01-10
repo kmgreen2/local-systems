@@ -1,0 +1,5 @@
+FROM kmgreen2/ethereum-base:latest
+
+COPY ./start_membernode.sh /
+
+ENTRYPOINT /start_membernode.sh

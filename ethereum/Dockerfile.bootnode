@@ -1,0 +1,9 @@
+FROM kmgreen2/ethereum-base:latest
+
+COPY genesis.json $ETH_DATA_DIR/
+COPY boot.key $ETH_DATA_DIR/
+COPY start_bootnode.sh /
+
+RUN geth --datadir="$ETH_DATA_DIR" init $ETH_DATA_DIR/genesis.json
+
+ENTRYPOINT /start_bootnode.sh
