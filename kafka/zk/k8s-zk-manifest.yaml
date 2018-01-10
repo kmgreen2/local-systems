@@ -3,19 +3,6 @@ kind: Namespace
 metadata:
   name: kafka
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: zk-cs
-  labels:
-    app: zk
-spec:
-  ports:
-  - port: 2181
-    name: client
-  selector:
-    app: zk
----
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
@@ -93,3 +80,17 @@ spec:
       resources:
         requests:
           storage: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zk-cs
+  namespace: kafka
+  labels:
+    app: zk
+spec:
+  ports:
+  - port: 2181
+    name: client
+  selector:
+    app: zk
