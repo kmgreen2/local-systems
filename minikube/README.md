@@ -4,13 +4,22 @@ This repo is mostly just this README, which just reminds me how to start
 minikube locally.  In the future, it may include other things such as k8s
 manifests for running the local cluster.
 
-This assumes that minikube is installed locally with hyperkit (VM):
+This assumes that minikube is installed locally with virtualbox (VM):
 
 https://github.com/kubernetes/minikube
 
-For now, it is really easy.  Just run this to start:
+There is an issue with install Virtualbox on Mac OS X High Sierra:
 
-minikube start --vm-driver hyperkit
+https://developer.apple.com/library/content/technotes/tn2459/_index.html
+
+The best workaround is to run virtbox_osx_workaround.sh with the
+Security&Privacy settings open.  Click approve in the setting window.  Once you
+can run the script without an entry in the S&P window, installing Virtualbox
+via brew should work fine.
+
+Once VirtualBox is installed, run this to start:
+
+minikube start --vm-driver virtualbox --bootstrapper kubeadm
 
 If that fails complaining about DHCP leases, run this before starting:
 
@@ -18,8 +27,4 @@ minikube delete
 
 # Helpers
 
-If you need to get a terminal in Docker's VM, run this (total hack adapted from
-https://stackoverflow.com/questions/39739560/how-to-access-the-vm-created-by-dockers-hyperkit):
-
-screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
-
+To ssh into the VM, just run 'minikube ssh'
