@@ -22,8 +22,27 @@ used to bootstrap nodes into a private Ethereum network (id=1337)
 This includes from kmgreen2/ethereum-base and starts a member server in an
 ethereum network.
 
-### ToDo: Add image for miners: https://github.com/ethereum/go-ethereum/wiki/Private-network
+### kmgreen2/ethereum-miner
+
+This includes from kmgreen2/ethereum-base and starts a miner server in an
+ethereum network.
 
 ## To Run
 
-ToDo: Add instructions when k8s manifests are ready
+Apply the Kubernetes manifests for each component (kubectl apply -f <manifest>):
+
+### ethereum/k8s-ethereum-base.yaml
+
+Base manifest containing shared objects, such as the namespace the deployments run in
+
+### ethereum/k8s-bootnode-manifest.yaml
+
+Deployment and service objects for the bootnode
+
+### ethereum/k8s-membernode-manifest.yaml
+
+Deployment and service objects for the member nodes
+
+### ethereum/k8s-miner-manifest.yaml
+
+Deployment and service objects for the miners

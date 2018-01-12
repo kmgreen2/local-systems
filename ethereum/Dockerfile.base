@@ -2,6 +2,7 @@ FROM golang:1.9.2
 
 RUN apt-get update
 RUN apt-get install dnsutils -y
+RUN apt-get install netcat -y
 
 ENV ETH_DATA_DIR=/var/lib/ethereum/data \
     ETH_LOG_DIR=/var/log/ethereum \
