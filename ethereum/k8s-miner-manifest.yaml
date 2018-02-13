@@ -22,30 +22,10 @@ spec:
             memory: "256Mi"
             cpu: "0.1"
         ports:
-        - containerPort: 30301
-          name: server
-        - containerPort: 8101
-          name: rpc
         command:
         - sh
         - -c
-        - "/start_miner.sh"
-        readinessProbe:
-          exec:
-            command:
-            - sh
-            - -c
-            - "nc -z -v -w5 localhost 30301 && nc -z -v -w5 localhost 8101"
-          initialDelaySeconds: 10
-          timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-            - sh
-            - -c
-            - "nc -z -v -w5 localhost 30301 && nc -z -v -w5 localhost 8101"
-          initialDelaySeconds: 10
-          timeoutSeconds: 5
+        - "sleep 10000 ; /start_miner.sh"
         volumeMounts:
         - name: logdir
           mountPath: /var/log/ethereum
@@ -54,20 +34,3 @@ spec:
       volumes:
         - name: logdir
           emptyDir: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ethereum-miner
-  namespace: ethereum
-  labels:
-    app: ethereum-miner
-spec:
-  ports:
-  - port: 30301
-    name: client
-  - port: 8101
-    name: rpc
-  selector:
-    app: ethereum-miner
-  clusterIP: None

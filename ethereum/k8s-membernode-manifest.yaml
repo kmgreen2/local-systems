@@ -22,7 +22,7 @@ spec:
             memory: "256Mi"
             cpu: "0.1"
         ports:
-        - containerPort: 30301
+        - containerPort: 30303
           name: server
         - containerPort: 8101
           name: rpc
@@ -35,7 +35,7 @@ spec:
             command:
             - sh
             - -c
-            - "nc -z -v -w5 localhost 30301 && nc -z -v -w5 localhost 8101"
+            - "nc -z -v -u -w5 localhost 30303"
           initialDelaySeconds: 10
           timeoutSeconds: 5
         livenessProbe:
@@ -43,7 +43,7 @@ spec:
             command:
             - sh
             - -c
-            - "nc -z -v -w5 localhost 30301 && nc -z -v -w5 localhost 8101"
+            - "nc -z -v -u -w5 localhost 30303"
           initialDelaySeconds: 10
           timeoutSeconds: 5
         volumeMounts:
@@ -64,7 +64,7 @@ metadata:
     app: ethereum-member
 spec:
   ports:
-  - port: 30301
+  - port: 30303
     name: client
   - port: 8101
     name: rpc

@@ -3,6 +3,8 @@ FROM kmgreen2/ethereum-base:latest
 COPY genesis.json $ETH_DATA_DIR/
 COPY boot.key $ETH_DATA_DIR/
 COPY start_bootnode.sh /
+COPY enode_server.go /
 
 RUN geth --datadir="$ETH_DATA_DIR" init $ETH_DATA_DIR/genesis.json
 
+EXPOSE $ETH_BOOT_PORT
