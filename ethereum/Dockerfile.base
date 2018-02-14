@@ -27,6 +27,8 @@ WORKDIR $GOPATH/src/github.com/ethereum/go-ethereum
 
 RUN go install -v ./...
 
+RUN echo "set -o vi" >> ~/.bashrc
+
 WORKDIR /
 
 VOLUME ["$ETH_DATA_DIR", "$ETH_LOG_DIR"]
