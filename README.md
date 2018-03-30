@@ -1,8 +1,7 @@
 # local-systems
-Repo for setting up distributed systems locally
+Repo for setting up distributed systems locally.  At this point, this is mostly
+just notes on minikube.
 
-kafka: Dockerfiles and scripts used to stand-up standalone a standalone Kafka instance (Kafka + ZK)
-
-ethereum: Dockerfiles and scripts used to stand-up a private Ethereum network
-
-minikube: Notes for my local minikube setup
+This repo used to contain manifests and scripts for running Kafka, ZK and
+Ethereum in Kubernetes.  The system-specific manifests, scripts, etc. is now
+being maintained here: https://github.com/kmgreen2/cloud-deployments
